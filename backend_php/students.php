@@ -73,28 +73,20 @@ echo 'Registered Successfully';
     $graduation=$_POST['graduation'];
     $reg_no=$_POST['reg_no'];;
     
-    if($first_name===""  || $surname==="" || $email==="" || $phone==="" || $image==="" || $guarantor_image===""  || $programme===""){
+    if($first_name===""  || $surname==="" || $email==="" || $phone==="" || $image==="" ){
         echo 'All Fields are required';
     }else{
-       
-$query="SELECT * FROM students WHERE email='".$email."'";
-
-$result = mysqli_query($conn,$query);
-
-if (mysqli_num_rows($result) > 0) {
-    echo 'Student Already Exist with this Email: '.$email;
-}else{
-    $query="INSERT INTO `students` (`id`, `first_name`, `surname`, `other_names`, `dob`, `marital`, `phone`, `email`, `address`, `lga`, `state`, `guarantor`, `guarantor_image`, `guarantor_phone`, `reg_no`, `fee_paid`, `fee`, `image`, `programme`, `graduated`, `prog_id`, `gender`, `guarantor_address`, `date_admitted`, `graduation`) VALUES (NULL, '".$first_name."', '".$surname."', '".$other_names."', '".$dob."', '".$marital."', '".$phone."', '".$email."', '".$address."', '".$lga."', '".$state."', '".$guarantor."', '".$guarantor_image."', '".$guarantor_phone."', '".$reg_no."', '', '30000', '".$image."', '".$programme."', '', '".$pro_id."', '".$gender."', '".$guarantor_address."', '".$date_admitted."', '".$graduation."');";
+    $query="UPDATE `students` SET  `dob`='".$dob."', `email`='".$email."', `address`='".$address."', `lga`='".$lga."', `state`='".$state."', `guarantor`='".$guarantor."', `guarantor_phone`='".$guarantor_phone."', `image`='".$image."',  `guarantor_address`='".$guarantor_address."', `date_admitted`='".$date_admitted."', `graduation`='".$graduation."' WHERE reg_no='".$reg_no."'";
 
     if(mysqli_query($conn,$query)){
-echo 'Registered Successfully';
+echo 'Updated Successfully';
     }else{
-        echo "Error Registering Student";
+        echo "Error Updating Student";
     }
 }
 
     
-}   
+   
 
 
 }else{

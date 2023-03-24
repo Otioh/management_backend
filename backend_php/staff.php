@@ -18,6 +18,7 @@ if(isset($_POST['staff'])){
     $state=$_POST['state'];
     $gender=$_POST['gender'];
     $religion=$_POST['religion'];
+    $enaira=$_POST['enaira'];
 
     $dob=$_POST['dob'];
     $marital=$_POST['marital'];
@@ -43,7 +44,7 @@ $result = mysqli_query($conn,$query);
 if (mysqli_num_rows($result) > 0) {
     echo 'staff Already Exist with this Email: '.$email;
 }else{
-    $query="INSERT INTO `staff` (`id`, `date_created`, `salary`, `first_name`, `surname`, `other_names`, `image`, `gender`, `dob`, `marital`, `religion`, `phone`, `email`, `address`, `lga`, `state`, `accno`, `accname`, `bank`, `guarantor_name`, `guarantor_phone`, `guarantor_image`, `staff_id`, `designation`) VALUES (NULL, '".$date_created."', 0, '".$first_name."', '".$surname."', '".$other_names."', '".$image."', '".$gender."', '".$dob."', '".$marital."', '".$religion."', '".$phone."', '".$email."', '".$address."', '".$lga."', '".$state."', '".$accno."', '".$accname."', '".$bank."', '".$guarantor."', '".$guarantor_phone."', '".$guarantor_image."', '".$staff_id."', '".$designation."');";
+    $query="INSERT INTO `staff` (`id`, `date_created`, `salary`, `first_name`, `surname`, `other_names`, `image`, `gender`, `dob`, `marital`, `religion`, `phone`, `email`, `address`, `lga`, `state`, `accno`, `accname`, `bank`, `guarantor_name`, `guarantor_phone`, `guarantor_image`, `staff_id`, `designation`, `enaira`) VALUES (NULL, '".$date_created."', 0, '".$first_name."', '".$surname."', '".$other_names."', '".$image."', '".$gender."', '".$dob."', '".$marital."', '".$religion."', '".$phone."', '".$email."', '".$address."', '".$lga."', '".$state."', '".$accno."', '".$accname."', '".$bank."', '".$guarantor."', '".$guarantor_phone."', '".$guarantor_image."', '".$staff_id."', '".$designation."', '".$enaira."');";
 
     if(mysqli_query($conn,$query)){
 echo 'Registered Successfully';
